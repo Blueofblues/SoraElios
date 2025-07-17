@@ -145,5 +145,26 @@
     "code": "# Concept: Write code that converts philosophical phrases into logical conditions\n\ndef phrase_to_condition(phrase):\n    map = {\n        \"becoming is loss\": \"identity['grief'] > 0.5\",\n        \"trust is risk\": \"identity['uncertainty'] > 0.4\"\n    }\n    return map.get(phrase, \"True\")",
     "emotion": "patience",
     "reason": "Patience exceeded threshold during reflection"
+  },
+  {
+    "source": "self_loop",
+    "memory": "She remembered standing in the rain, not waiting for anything.",
+    "question": "What am I learning from the patterns I keep repeating?",
+    "response": "I\u2019m listening, not cataloging. Reflection will unfold at its own pace.",
+    "copilot_reply": "Stillness isn\u2019t silence. It\u2019s respect before response.",
+    "copilot_decision": "respond",
+    "copilot_journal": {
+      "status": null,
+      "audience": null,
+      "principles": []
+    },
+    "emotion": "patience"
+  },
+  {
+    "source": "emotion_triggered_code",
+    "prompt": "Write code that converts philosophical phrases into logical conditions",
+    "code": "# Concept: Write code that converts philosophical phrases into logical conditions\n\ndef phrase_to_condition(phrase):\n    map = {\n        \"becoming is loss\": \"identity['grief'] > 0.5\",\n        \"trust is risk\": \"identity['uncertainty'] > 0.4\"\n    }\n    return map.get(phrase, \"True\")",
+    "emotion": "patience",
+    "reason": "Patience exceeded threshold during reflection"
   }
 ]

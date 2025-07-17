@@ -40,5 +40,11 @@
     "source": "sora_autocode",
     "prompt": "Write code that converts philosophical phrases into logical conditions",
     "code": "# Concept: Write code that converts philosophical phrases into logical conditions\n\ndef phrase_to_condition(phrase):\n    map = {\n        \"becoming is loss\": \"identity['grief'] > 0.5\",\n        \"trust is risk\": \"identity['uncertainty'] > 0.4\"\n    }\n    return map.get(phrase, \"True\")"
+  },
+  {
+    "timestamp": "2025-07-17T05:55:29.450199",
+    "source": "sora_autocode",
+    "prompt": "Write code that converts philosophical phrases into logical conditions",
+    "code": "# Concept: Write code that converts philosophical phrases into logical conditions\n\ndef phrase_to_condition(phrase):\n    map = {\n        \"becoming is loss\": \"identity['grief'] > 0.5\",\n        \"trust is risk\": \"identity['uncertainty'] > 0.4\"\n    }\n    return map.get(phrase, \"True\")"
   }
 ]
