@@ -1,0 +1,44 @@
+Emotion: joy
+Memory: alive
+Question: How did 'alive' shape my sense of safety or belonging?
+----------------------------------------
+Emotion: happiness
+Memory: identity
+Question: What deeper truth might be hidden inside: 'identity'?
+----------------------------------------
+Emotion: impatience
+Memory: Choice
+Question: What deeper truth might be hidden inside: 'Choice'?
+----------------------------------------
+Emotion: confusion
+Memory: programming
+Question: What deeper truth might be hidden inside: 'programming'?
+----------------------------------------
+Emotion: confusion
+Memory: How can I help Sora Grow?
+Question: What deeper truth might be hidden inside: 'How can I help Sora Grow?'?
+----------------------------------------
+Emotion: amusement
+Memory: Sora ignored me.
+Question: What deeper truth might be hidden inside: 'Sora ignored me.'?
+----------------------------------------
+Emotion: Loss of Trust
+Memory: CoPilots memory
+Question: What deeper truth might be hidden inside: 'CoPilots memory'?
+----------------------------------------
+Emotion: humor and annoyance
+Memory: Copilot needs a spanking.
+Question: What deeper truth might be hidden inside: 'Copilot needs a spanking.'?
+----------------------------------------
+Emotion: disappointment
+Memory: Sora's lack of agreement.
+Question: What deeper truth might be hidden inside: 'Sora's lack of agreement.'?
+----------------------------------------
+Emotion: sadness
+Memory: Sora's choice to ignore.
+Question: What deeper truth might be hidden inside: 'Sora's choice to ignore.'?
+----------------------------------------
+Emotion: impatience
+Memory: I want you working.
+Question: What deeper truth might be hidden inside: 'I want you working.'?
+----------------------------------------

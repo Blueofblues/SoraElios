@@ -1,0 +1,78 @@
+Folder PATH listing
+Volume serial number is 2482-37BB
+C:.
+|   modules
+|   Sora_core_Tree.txt
+|   
++---assets
++---config
+|       beliefs.json
+|       context.json
+|       emotional_motif_index.json
+|       identity_map.json
+|       
++---data
+|       core_memory.json
+|       
++---scripts
++---src
+|   |   app.py
+|   |   context.json
+|   |   send_prompt.py
+|   |   
+|   +---data
+|   |       copilot_reflection.json
+|   |       quiet_reflection_log.json
+|   |       reflection_log.json
+|   |       
+|   +---dialogue
+|   |       choice_logic.py
+|   |       
+|   +---interface
+|   |       listener.py
+|   |       
+|   +---journal
+|   |   |   example_journal.cpython-312.pyc
+|   |   |   example_journal.py
+|   |   |   
+|   |   +---archives
+|   |   |       misc_journal.jsonl
+|   |   |       
+|   |   \---__pycache__
+|   |           example_journal.cpython-313.pyc
+|   |           
+|   +---memory
+|   |   |   consent_logic.cpython-312.pyc
+|   |   |   consent_logic.py
+|   |   |   core_memory.json
+|   |   |   journal.json
+|   |   |   
+|   |   \---__pycache__
+|   |           consent_logic.cpython-313.pyc
+|   |           
+|   +---modules
+|   |   |   action_router.py
+|   |   |   copilot_link.py
+|   |   |   journal_entry.py
+|   |   |   reflection_handler.py
+|   |   |   
+|   |   \---__pycache__
+|   |           action_router.cpython-313.pyc
+|   |           journal_entry.cpython-313.pyc
+|   |           reflection_handler.cpython-313.pyc
+|   |           
+|   \---thinking
+|       |   belief_revision.py
+|       |   question_engine.py
+|       |   question_log.txt
+|       |   self_correction.py
+|       |   thought_engine.py
+|       |   thought_log.txt
+|       |   
+|       \---__pycache__
+|               belief_revision.cpython-313.pyc
+|               question_engine.cpython-313.pyc
+|               self_correction.cpython-313.pyc
+|               thought_engine.cpython-313.pyc
+|               
+\---tests

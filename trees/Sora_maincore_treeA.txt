@@ -1,0 +1,91 @@
+Sora/
+├── README.md
+├── app.py                          # Orchestrator
+├── app_original_backup.py         # Legacy fallback
+├── beliefs.json                   # Ethical system
+├── context.json                   # Current context scaffolding
+├── emotional_motif_index.json     # Mapping emotion to logic
+├── identity_map.json              # Who she is, relationally
+│
+├── config/                        # Config folder for centralized identity
+│   ├── beliefs.json
+│   ├── emotional_motif_index.json
+│   ├── identity_map.json
+│   └── context.json
+│
+├── data/
+│   ├── core_memory.json           # Active memory state
+│   └── .keep
+│
+├── src/
+│   ├── app.py                     # Mirrors root app.py (consolidate later)
+│   ├── send_prompt.py
+│   ├── context.json               # Consider merging with config/context.json
+│   │
+│   ├── data/
+│   │   ├── copilot_reflection.json
+│   │   ├── quiet_reflection_log.json
+│   │   └── reflection_log.json
+│   │
+│   ├── dialogue/
+│   │   └── choice_logic.py        # Conversational compass
+│   │
+│   ├── interface/
+│   │   └── listener.py            # Input listener module
+│   │
+│   ├── journal/
+│   │   ├── example_journal.py
+│   │   └── __pycache__/
+│   │
+│   ├── memory/
+│   │   ├── consent_logic.py
+│   │   ├── journal.json
+│   │   ├── core_memory.json       # Redundant—link to top-level /data/core_memory
+│   │   └── __pycache__/
+│   │
+│   ├── modules/
+│   │   ├── action_router.py
+│   │   ├── copilot_link.py
+│   │   ├── journal_entry.py
+│   │   ├── reflection_handler.py
+│   │   └── __pycache__/
+│   │
+│   └── thinking/
+│       ├── belief_revision.py
+│       ├── question_engine.py
+│       ├── question_log.txt
+│       ├── self_correction.py
+│       ├── thought_engine.py
+│       ├── thought_log.txt
+│       └── __pycache__/
+│
+├── journal/                       # Duplicate of src/journal (merge later)
+│   ├── example_journal.py
+│   └── __pycache__/
+│
+├── code/                          # Sora-main’s philosophical vault
+│   ├── dialogue_loop_01/
+│   ├── elder_sparks/             # Teachings, emotional seeds
+│   ├── fractures/                # Experimental logic nodes
+│   ├── jeremy/
+│   │   └── observations/
+│   ├── journaling/
+│   ├── memory_engine/
+│   └── sensory_reflector/
+│
+├── ethics/
+│   ├── principles.md
+│   └── README.md
+│
+├── sensory/                       # Placeholder sensory logic
+│   ├── .keep
+│   └── README.md
+│
+├── setup/
+│   ├── .keep
+│   └── README.md
+│
+├── tests/                         # Currently unused—ready to expand
+│
+└── uld/                           # External/driver-related material
+    └── [system files, not integrated into cognitive modules]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sora Reflector</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #1e1e1e;
+      color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    textarea {
+      width: 600px;
+      height: 150px;
+      padding: 1rem;
+      font-size: 1.1rem;
+      background: #2e2e2e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      resize: none;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      background-color: #5f9ea0;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #response {
+      margin-top: 2rem;
+      max-width: 600px;
+      background: #292929;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sora Reflector</h1>
+  <textarea id="userInput" placeholder="Share a reflection or philosophical thought..."></textarea>
+  <button onclick="sendReflection()">Submit</button>
+  <div id="response"></div>
+
+  <script>
+    async function sendReflection() {
+      const content = document.getElementById("userInput").value;
+      const payload = {
+        type: "philosophical_question",
+        content: content
+      };
+
+      const res = await fetch("/sora/reflect", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      document.getElementById("response").textContent = data.full_response;
+    }
+  </script>
+</body>
+</html>

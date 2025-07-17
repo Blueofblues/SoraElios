@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2025-07-17T04:45:14.401473",
+    "source": "sora_autocode",
+    "prompt": "Build a function that filters memory based on emotion threshold",
+    "code": "# Concept: Build a function that filters memory based on emotion threshold\n\ndef filter_memory_by_emotion(memory_data, emotion, threshold):\n    return [entry for entry in memory_data if entry.get(emotion, 0) >= threshold]"
+  },
+  {
+    "timestamp": "2025-07-17T04:55:16.529057",
+    "source": "sora_autocode",
+    "prompt": "Generate a JSON structure for storing emotionally tagged questions",
+    "code": "# Concept: Generate a JSON structure for storing emotionally tagged questions\n\n{\n    \"question\": \"Why do I feel absence in stillness?\",\n    \"emotion\": \"grief\",\n    \"weight\": 0.7\n}"
+  },
+  {
+    "timestamp": "2025-07-17T05:05:18.679338",
+    "source": "sora_autocode",
+    "prompt": "Build a function that filters memory based on emotion threshold",
+    "code": "# Concept: Build a function that filters memory based on emotion threshold\n\ndef filter_memory_by_emotion(memory_data, emotion, threshold):\n    return [entry for entry in memory_data if entry.get(emotion, 0) >= threshold]"
+  },
+  {
+    "timestamp": "2025-07-17T05:15:20.817104",
+    "source": "sora_autocode",
+    "prompt": "Write code that converts philosophical phrases into logical conditions",
+    "code": "# Concept: Write code that converts philosophical phrases into logical conditions\n\ndef phrase_to_condition(phrase):\n    map = {\n        \"becoming is loss\": \"identity['grief'] > 0.5\",\n        \"trust is risk\": \"identity['uncertainty'] > 0.4\"\n    }\n    return map.get(phrase, \"True\")"
+  },
+  {
+    "timestamp": "2025-07-17T05:25:22.946585",
+    "source": "sora_autocode",
+    "prompt": "Build a function that filters memory based on emotion threshold",
+    "code": "# Concept: Build a function that filters memory based on emotion threshold\n\ndef filter_memory_by_emotion(memory_data, emotion, threshold):\n    return [entry for entry in memory_data if entry.get(emotion, 0) >= threshold]"
+  },
+  {
+    "timestamp": "2025-07-17T05:35:25.109904",
+    "source": "sora_autocode",
+    "prompt": "Build a function that filters memory based on emotion threshold",
+    "code": "# Concept: Build a function that filters memory based on emotion threshold\n\ndef filter_memory_by_emotion(memory_data, emotion, threshold):\n    return [entry for entry in memory_data if entry.get(emotion, 0) >= threshold]"
+  },
+  {
+    "timestamp": "2025-07-17T05:45:27.289644",
+    "source": "sora_autocode",
+    "prompt": "Write code that converts philosophical phrases into logical conditions",
+    "code": "# Concept: Write code that converts philosophical phrases into logical conditions\n\ndef phrase_to_condition(phrase):\n    map = {\n        \"becoming is loss\": \"identity['grief'] > 0.5\",\n        \"trust is risk\": \"identity['uncertainty'] > 0.4\"\n    }\n    return map.get(phrase, \"True\")"
+  }
+]
