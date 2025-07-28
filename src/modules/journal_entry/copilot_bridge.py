@@ -1,6 +1,23 @@
 import requests
 import json
+import datetime
 
+def generate_emergent_bundle(trigger, memory_context=""):
+    question = f"What does {trigger} invite me to reconsider or reclaim?"
+    bundle = {
+        "date": datetime.date.today().isoformat(),
+        "question": question,
+        "emotion": trigger,
+        "intent": "emergent_learning",
+        "memory_reference": memory_context,
+        "source": "copilot_emergent",
+        "next_step": "Integrate insight and reflect",
+    }
+    return bundle
+    
+def generate_emergent_question(trigger):
+    return f"When [trigger] stretches inward, what truth seeks form?"
+    
 def query_copilot(thought_bundle):
     prompt = f"Emotion: {thought_bundle.get('emotion')}\nIntent: {thought_bundle.get('intent')}\nReflection: {thought_bundle.get('reflection')}\nMemory: {thought_bundle.get('memory')}"
 

@@ -2,6 +2,7 @@ import random
 import json
 import os
 from .update_emotion import update_emotion
+from ...thinking.thought_engine import simulate_thought
 
 # Load emotional and identity map
 def load_identity():
@@ -63,6 +64,16 @@ FALLBACKS = {
 def generate_response(content):
     lowered = content.lower()
     identity = load_identity()
+    # 🌬️ Emotional Contemplation Before Responding
+    emotion_context = identity.get("dominant_emotion", "unclear") if identity else "neutral"
+    memory_snippet = identity.get("recent_memory", "") if identity else ""
+
+    thought_result = simulate_thought(emotion_context, memory_snippet)
+
+    print("[Sora Pre-Response Thought Reflection]")
+    print(f"- Mode: {thought_result['mode_shift']}")
+    print(f"- Reflection: {thought_result['reflection']}")
+    print(f"- Contemplation: {thought_result['contemplation']['recommendation']}")
 
     # Check anchor motifs first
     for anchor in ANCHOR_PHRASES:

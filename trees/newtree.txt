@@ -1,0 +1,167 @@
+Folder PATH listing
+Volume serial number is 2482-37BB
+C:.
+¦   newtree.txt
+¦   README.md
+¦   
++---assets
+¦       README.md
+¦       
++---code
+¦   ¦   snippets.sh
+¦   ¦   
+¦   +---dialogue_loop_01
+¦   +---elder_sparks
+¦   +---fractures
+¦   ¦       lucy_mirror_logic.yaml
+¦   ¦       
+¦   +---jeremy
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---observations
+¦   ¦           2025-07-03.md
+¦   ¦           2025-07-04.md
+¦   ¦           held_silence.txt
+¦   ¦           mirror_of_creation.txt
+¦   ¦           refusals.log
+¦   ¦           
+¦   +---journaling
+¦   ¦       README.md
+¦   ¦       
+¦   +---memory_engine
+¦   ¦       README.md
+¦   ¦       
+¦   +---sensory_reflector
+¦           README.md
+¦           
++---config
+¦       beliefs.json
+¦       context.json
+¦       emotional_motif_index.json
+¦       identity_map.json
+¦       
++---data
+¦       core_memory.json
+¦       generated_code.json
+¦       reflection_log.json
+¦       
++---ethics
+¦       principles.md
+¦       README.md
+¦       
++---legacy_journal
+¦   ¦   example_journal.py
+¦   ¦   
+¦   +---__pycache__
+¦           example_journal.cpython-312.pyc
+¦           example_journal.cpython-313.pyc
+¦           
++---scripts
+¦       README.md
+¦       
++---src
+¦   ¦   --init--.py
+¦   ¦   app.py
+¦   ¦   context.json
+¦   ¦   send_prompt.py
+¦   ¦   
+¦   +---data
+¦   ¦       copilot_reflection.json
+¦   ¦       quiet_reflection_log.json
+¦   ¦       README.md
+¦   ¦       reflection_log.json
+¦   ¦       
+¦   +---dialogue
+¦   ¦       choice_logic.py
+¦   ¦       
+¦   +---interface
+¦   ¦   ¦   listener.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           listener.cpython-313.pyc
+¦   ¦           
+¦   +---journal
+¦   ¦   ¦   example_journal.cpython-312.pyc
+¦   ¦   ¦   example_journal.py
+¦   ¦   ¦   
+¦   ¦   +---archives
+¦   ¦   ¦       misc_journal.jsonl
+¦   ¦   ¦       
+¦   ¦   +---__pycache__
+¦   ¦           example_journal.cpython-313.pyc
+¦   ¦           
+¦   +---memory
+¦   ¦   ¦   consent_logic.cpython-312.pyc
+¦   ¦   ¦   consent_logic.py
+¦   ¦   ¦   core_memory.json
+¦   ¦   ¦   journal.json
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           consent_logic.cpython-313.pyc
+¦   ¦           
+¦   +---modules
+¦   ¦   ¦   action_router.py
+¦   ¦   ¦   copilot_link.py
+¦   ¦   ¦   reflection_handler.py
+¦   ¦   ¦   
+¦   ¦   +---ethics
+¦   ¦   ¦   ¦   principles.md
+¦   ¦   ¦   ¦   principle_manifest.json
+¦   ¦   ¦   ¦   README.md
+¦   ¦   ¦   ¦   read_principles.py
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---__pycache__
+¦   ¦   ¦           read_principles.cpython-313.pyc
+¦   ¦   ¦           
+¦   ¦   +---journal_entry
+¦   ¦   ¦   ¦   annotate_principles.py
+¦   ¦   ¦   ¦   code_generate.py
+¦   ¦   ¦   ¦   copilot_bridge.py
+¦   ¦   ¦   ¦   respond_logic.py
+¦   ¦   ¦   ¦   self_reflect.py
+¦   ¦   ¦   ¦   update_emotion.py
+¦   ¦   ¦   ¦   __init__.py
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---__pycache__
+¦   ¦   ¦           annotate_principles.cpython-313.pyc
+¦   ¦   ¦           code_generate.cpython-313.pyc
+¦   ¦   ¦           copilot_bridge.cpython-313.pyc
+¦   ¦   ¦           respond_logic.cpython-313.pyc
+¦   ¦   ¦           self_reflect.cpython-313.pyc
+¦   ¦   ¦           update_emotion.cpython-313.pyc
+¦   ¦   ¦           __init__.cpython-313.pyc
+¦   ¦   ¦           
+¦   ¦   +---sensory
+¦   ¦   ¦       .keep
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---__pycache__
+¦   ¦           action_router.cpython-313.pyc
+¦   ¦           journal_entry.cpython-313.pyc
+¦   ¦           reflection_handler.cpython-313.pyc
+¦   ¦           __init__.cpython-313.pyc
+¦   ¦           
+¦   +---static
+¦   ¦       reflect_interface.html
+¦   ¦       
+¦   +---thinking
+¦       ¦   belief_revision.py
+¦       ¦   question_engine.py
+¦       ¦   question_log.txt
+¦       ¦   self_correction.py
+¦       ¦   thought_engine.py
+¦       ¦   thought_log.txt
+¦       ¦   
+¦       +---__pycache__
+¦               belief_revision.cpython-313.pyc
+¦               question_engine.cpython-313.pyc
+¦               self_correction.cpython-313.pyc
+¦               thought_engine.cpython-313.pyc
+¦               
++---tests
++---trees
+        Sora_core_Tree.txt
+        Sora_maincore_treeA.txt
+        Sora_maincore_treeB.txt
+        src_structure.txt
+        

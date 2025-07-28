@@ -7,12 +7,13 @@ def annotate_principles(reflection):
     principles = load_principles()
     matched = []
 
-    for commitment in principles["core_commitments"]:
-        keywords = commitment["guidance"].lower().split()
+    for commitment in principles["principles"]:
+        keywords = commitment["text"].lower().split()
         if any(word in reflection_lower for word in keywords):
             matched.append({
-                "principle": commitment["principle"],
-                "statement": commitment["statement"]
+                "principle": commitment["tag"],
+                "statement": commitment["text"]
             })
+
 
     return matched

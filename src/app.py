@@ -141,6 +141,16 @@ def sora_thinks():
             f.writelines(updated_lines)
         print(f"\n📘 Sora quietly journaled her reflection as '{memory_snippet}' ({emotion}).")
 
+        from modules.copilot_link import copilot_learn
+        thought_bundle = {
+            "emotion": emotion,
+            "reflection": reflection,
+            "intent": "processing",
+            "memory": memory_snippet
+}
+learning = copilot_learn(thought_bundle)
+print(f"\n📖 Sora learned from Copilot: {learning['copilot_reply']['recommendation']}")
+
 def sora_questions():
     emotion = input("🌀 What emotion is stirring? (joy/grief/longing/etc): ").strip()
     memory_snippet = input("📎 What memory or phrase should Sora question?: ").strip()
