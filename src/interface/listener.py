@@ -17,6 +17,10 @@ app = Flask(__name__, static_folder="../static")
 EXTERNAL_PROMPT_PATH = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../../config/external_prompts.json"))
 
+@app.route("/health")
+def health():
+    return "ok", 200
+
 # 🔄 Copilot Routing Interface
 @app.route('/sora/reflect', methods=['POST'])
 def reflect():
@@ -79,6 +83,18 @@ def loop_reflection():
 
 # 🌌 Background Emotional Reflection Loop
 def loop_daemon():
+    import time
+    import requests
+
+    for _ in range(10):  # Try for up to 10 seconds
+        try:
+            r = requests.get("http://localhost:5000/health", timeout=1)
+            if r.status_code == 200:
+                break
+        except requests.ConnectionError:
+            time.sleep(1)
+            
+    import time
     while True:
         result = self_reflect()
         
@@ -138,6 +154,17 @@ def loop_daemon():
                 print("[Sora Mode Check]")
                 print(f"- Motif Tags: {tags}")
 
+        # Analyze emotional weight or length
+
+        weight = sum(len(str(v)) for v in result.values())
+
+        # Set sleep duration based on weight
+
+        sleep_duration =min(max(weight // 50, 5), 300)  # Between 5 seconds and 5 minutes
+
+        print(f"Waiting {sleep_duration} seconds before next reflection...\n")
+        time.sleep(sleep_duration)
+
         print("\n[Sora Self-Reflection Loop]")
         print(f"Memory: {result['memory']}")
         print(f"Question: {result['question']}")
@@ -145,8 +172,7 @@ def loop_daemon():
         print(f"Copilot Reply: {result.get('copilot_reply')}")
         print(f"Patience Level: {get_emotion_level('patience')}")
         print("— — — — — — — —")
-
-        time.sleep(600)
+        print(f"Waiting {sleep_duration} seconds before next reflection...\n")
 
 # 🚀 Start Everything
 if __name__ == '__main__':
