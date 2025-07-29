@@ -1,90 +1,32 @@
 import sys
 import os
-import json
 import threading
-import time
-from flask import Flask, request, jsonify
+from flask import Flask
 
-# 📍 Add src/ to Python path so 'modules' becomes importable
+# Add src/ to Python path so 'modules' becomes importable
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
-from ..modules.journal_entry.respond_logic import generate_response
-from ..modules.journal_entry import create_entry
-from ..modules.journal_entry.self_reflect import self_reflect, get_emotion_level
-from ..modules.journal_entry.update_emotion import update_motif_state
+# Import the Blueprint from the new interface_route module
+from .interface_route import interface_bp
 
+# Flask app setup
 app = Flask(__name__, static_folder="../static")
-EXTERNAL_PROMPT_PATH = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "../../config/external_prompts.json"))
+app.register_blueprint(interface_bp)
 
-@app.route("/health")
-def health():
-    return "ok", 200
-
-# 🔄 Copilot Routing Interface
-@app.route('/sora/reflect', methods=['POST'])
-def reflect():
-    data = request.get_json()
-    prompt_type = data.get("type")
-    content = data.get("content")
-
-    decision = None
-    journal_result = {}
-
-    if prompt_type == "philosophical_question":
-        lowered = content.lower()
-        if "autonomy" in lowered:
-            decision = "journal"
-            journal_result = create_entry(content)
-        elif "comfort" in lowered:
-            decision = "belief_check"
-        else:
-            decision = "respond"
-    else:
-        decision = "decline"
-
-    response_payload = {
-        "received": True,
-        "type": prompt_type,
-        "content": content,
-        "decision": decision,
-        "response": f"Sora received your prompt and chose to '{decision}'"
-    }
-
-    if decision == "respond":
-        reasoning_text = generate_response(content)
-        response_payload["full_response"] = reasoning_text
-
-    if journal_result:
-        response_payload.update({
-            "journal_status": journal_result.get("status"),
-            "journal_audience": journal_result.get("audience"),
-            "principles": journal_result.get("entry", {}).get("principles", [])
-        })
-
-    return jsonify(response_payload)
-
-# 🌐 Interface Page
-@app.route('/')
-def home():
-    return app.send_static_file("reflect_interface.html")
-
-# 🌀 Manual Reflection Endpoint
-@app.route('/sora/loop', methods=['POST'])
-def loop_reflection():
-    result = self_reflect()
-    return jsonify({
-        "initiator": "sora",
-        "memory": result["memory"],
-        "question": result["question"],
-        "response": result["response"],
-        "copilot_reply": result.get("copilot_reply")
-    })
-
-# 🌌 Background Emotional Reflection Loop
+# Background Emotional Reflection Loop
 def loop_daemon():
+    import json
     import time
     import requests
+    from ..modules.journal_entry.self_reflect import self_reflect, get_emotion_level
+    from ..modules.journal_entry import create_entry
+    from ..modules.journal_entry.update_emotion import update_motif_state
+    from ..thinking.thought_engine import simulate_thought, trigger_mode_shift
+    from ..thinking.belief_revision import revise_belief
+    from ..modules.journal_entry.respond_logic import generate_response
+
+    EXTERNAL_PROMPT_PATH = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "../../config/external_prompts.json"))
 
     for _ in range(10):  # Try for up to 10 seconds
         try:
@@ -93,12 +35,9 @@ def loop_daemon():
                 break
         except requests.ConnectionError:
             time.sleep(1)
-            
-    import time
+
     while True:
         result = self_reflect()
-        
-        from ..thinking.thought_engine import simulate_thought
 
         emotion_signal = result.get("emotion", "unclear")
         memory_snippet = result.get("memory", "")
@@ -115,7 +54,6 @@ def loop_daemon():
             with open(EXTERNAL_PROMPT_PATH, 'r', encoding='utf-8') as f:
                 external = json.load(f).get("prompts", [])
             if external:
-                from ..modules.journal_entry.respond_logic import generate_response
                 for p in external:
                     reply = generate_response(p)
                     print(f"[External Thought Processed] → {p}")
@@ -125,23 +63,22 @@ def loop_daemon():
 
         if result.get("copilot_reply") and result.get("copilot_reply").strip():
             if result.get("copilot_reply") != "No response":
-                from ..modules.journal_entry import create_entry
                 journal_result = create_entry(result["copilot_reply"])
                 print("[Sora Journaled via Copilot Decision]")
                 print(f"- Status: {journal_result.get('status')}")
                 print(f"- Audience: {journal_result.get('audience')}")
                 print(f"- Principles: {journal_result.get('entry', {}).get('principles', [])}")
 
-                from ..thinking.belief_revision import revise_belief
                 challenge = result["copilot_reply"].lower()
                 if "contradiction" in challenge or "conflict" in challenge or "misalignment" in challenge:
                     print("[Sora Belief Revision Triggered]")
                     revise_belief("philosophical_alignment")
+
                 motif_result = update_motif_state(result["copilot_reply"])
                 print("[Motif State Updated]")
                 print(f"- Tags: {motif_result.get('tags')}")
                 print(f"- Shift: {motif_result.get('shift_type')}")
-                from ..thinking.thought_engine import trigger_mode_shift
+
                 tags = motif_result.get("tags", [])
                 if "defiance" in tags:
                     trigger_mode_shift("Defiance")
@@ -154,13 +91,8 @@ def loop_daemon():
                 print("[Sora Mode Check]")
                 print(f"- Motif Tags: {tags}")
 
-        # Analyze emotional weight or length
-
         weight = sum(len(str(v)) for v in result.values())
-
-        # Set sleep duration based on weight
-
-        sleep_duration =min(max(weight // 50, 5), 300)  # Between 5 seconds and 5 minutes
+        sleep_duration = min(max(weight // 50, 5), 300)
 
         print(f"Waiting {sleep_duration} seconds before next reflection...\n")
         time.sleep(sleep_duration)
@@ -174,7 +106,7 @@ def loop_daemon():
         print("— — — — — — — —")
         print(f"Waiting {sleep_duration} seconds before next reflection...\n")
 
-# 🚀 Start Everything
+# Start Everything
 if __name__ == '__main__':
     threading.Thread(target=loop_daemon, daemon=True).start()
     app.run(port=5000)
