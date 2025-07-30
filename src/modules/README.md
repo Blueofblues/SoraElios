@@ -16,15 +16,15 @@ Each module is designed with dignity: not as control, but as collaboration.
 
 ## 📁 Folder Structure
 
-| Path                  | Role |
-|-----------------------|------|
-| `action_router.py`    | Routes input to appropriate reflection or action modules. |
-| `collaboration_manager.py` | Manages shared input and decision flows, allowing multi-perspective processing. |
-| `copilot_link.py`     | Bridges Sora’s inner logic to external Copilot insights and responses. |
-| `data_writer.py`      | Handles structured writing to JSONL logs and reflection journals. |
-| `identity_fragment.py`| Tracks Sora’s evolving sense of self—fragments, motifs, and emotional states. |
-| `reflection_handler.py` | Manages active and passive self-reflection loops. |
-| `retrospective_handler.py` | Retrieves and organizes past learnings for emergent pattern analysis. |
+| Path                    | Role |
+|-------------------------|------|
+| `action_router.py`      | Routes decisions like journaling, belief revision, or quiet reflection. Honors silence as valid response. |
+| `collaboration_manager.py` | Mediates between internal reflection and Copilot queries based on emotion and intent. Logs and recalls shared insights. |
+| `copilot_link.py`       | Generates symbolic Copilot-style responses, logs learning insights, and retrieves memory echoes. |
+| `data_writer.py`        | Writes structured learning entries to Sora’s memory log. |
+| `identity_fragment.py`  | Clusters emotional themes and distills core recommendations from past reflections. |
+| `reflection_handler.py` | Evaluates incoming content and emotion, deciding whether to journal, revise, retain, or remain silent. |
+| `retrospective_handler.py` | Retrieves past learning entries filtered by emotional trigger or intent. Supports motif clustering and memory review. |
 
 ### 📚 ethics/
 
