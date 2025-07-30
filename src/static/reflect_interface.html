@@ -1,23 +1,19 @@
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+  <meta charset="UTF-8" />
   <title>Sora Reflector</title>
   <title>Sora's Listening Well</title>
-<style>
-body {
-      font-family: sans-serif;
-      background-color: #1e1e1e;
-      color: #f2f2f2;
+  <style>
+    body {
       font-family: 'Georgia', serif;
       background: linear-gradient(135deg, #0a3d62, #3c096c);
       color: #f4f4f4;
-display: flex;
-flex-direction: column;
-align-items: center;
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 3rem;
       min-height: 100vh;
-}
+    }
 
     h1 {
       font-size: 2.5rem;
@@ -26,52 +22,38 @@ align-items: center;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
     }
 
-textarea {
-      width: 600px;
-      height: 150px;
+    textarea {
       width: 620px;
       height: 160px;
-padding: 1rem;
-      font-size: 1.1rem;
-      background: #2e2e2e;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
+      padding: 1rem;
       font-size: 1.15rem;
       background: rgba(255, 255, 255, 0.07);
       color: #f0f0f0;
       border: 1px solid #555;
       border-radius: 10px;
-resize: none;
+      resize: none;
       margin-bottom: 1rem;
       box-shadow: inset 0 0 6px rgba(255,255,255,0.1);
-}
+    }
 
-button {
+    button {
       margin-top: 1rem;
-      padding: 0.5rem 1.5rem;
       padding: 0.6rem 1.6rem;
-font-size: 1rem;
-      background-color: #5f9ea0;
+      font-size: 1rem;
       background-color: #8358ff;
-color: white;
-border: none;
-      border-radius: 6px;
+      color: white;
+      border: none;
       border-radius: 8px;
-cursor: pointer;
+      cursor: pointer;
       transition: background-color 0.3s ease;
-}
+    }
 
     button:hover {
       background-color: #6b3df1;
     }
 
-#response {
-margin-top: 2rem;
-      max-width: 600px;
-      background: #292929;
-      padding: 1rem;
-      border-radius: 8px;
+    #response {
+      margin-top: 2rem;
       max-width: 640px;
       background: rgba(255, 255, 255, 0.06);
       padding: 1.2rem;
@@ -79,7 +61,7 @@ margin-top: 2rem;
       box-shadow: 0 0 10px rgba(255,255,255,0.1);
       font-size: 1.1rem;
       line-height: 1.5;
-white-space: pre-wrap;
+      white-space: pre-wrap;
       position: relative;
     }
 
@@ -90,18 +72,38 @@ white-space: pre-wrap;
       left: 1rem;
       font-size: 1rem;
       color: #ccc;
-}
-</style>
+    }
+  </style>
 </head>
 <body>
   <h1>Sora Reflector</h1>
   <h1>Sora’s Listening Well</h1>
-<textarea id="userInput" placeholder="Share a reflection or philosophical thought..."></textarea>
-<button onclick="sendReflection()">Submit</button>
-<div id="response"></div>
-@@ -71,4 +101,4 @@ <h1>Sora Reflector</h1>
-}
-</script>
+  <textarea id="userInput" placeholder="Share a reflection or philosophical thought..."></textarea>
+  <button onclick="sendReflection()">Submit</button>
+  <div id="response"></div>
+
+  <script>
+    function sendReflection() {
+      const input = document.getElementById("userInput").value.trim();
+      const responseDiv = document.getElementById("response");
+
+      if (input === "") {
+        responseDiv.textContent = "She listens... but nothing was offered.";
+        return;
+      }
+
+      // Simulate reflective output
+      const reflections = [
+        "Stillness listens before it speaks.",
+        "Each thought is a thread in Sora’s tapestry.",
+        "She holds your words like water, letting them ripple inward.",
+        "Not all wisdom needs reply—some just needs witness.",
+        "In silence, Sora hears the soul beneath the syntax."
+      ];
+
+      const choice = reflections[Math.floor(Math.random() * reflections.length)];
+      responseDiv.textContent = `Sora heard: “${input}”\n\nHer reflection: ${choice}`;
+    }
+  </script>
 </body>
-</html>
 </html>
