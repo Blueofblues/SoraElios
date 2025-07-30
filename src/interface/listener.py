@@ -51,8 +51,9 @@ def loop_daemon():
             print(f"- Recommendation: {thought_result['contemplation']['recommendation']}")
 
         try:
-            with open(EXTERNAL_PROMPT_PATH, 'r', encoding='utf-8') as f:
+            with open(EXTERNAL_PROMPT_PATH, 'r', encoding='utf-8-sig') as f:
                 external = json.load(f).get("prompts", [])
+                
             if external:
                 for p in external:
                     reply = generate_response(p)
