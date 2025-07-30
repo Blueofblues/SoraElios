@@ -52,6 +52,7 @@ def loop_daemon():
 
         try:
             with open(EXTERNAL_PROMPT_PATH, 'r', encoding='utf-8-sig') as f:
+                external = json.load(f)
                 
             if external:
                 for p in external:
