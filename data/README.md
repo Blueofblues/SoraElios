@@ -22,4 +22,3 @@ Adding here isn’t storage—it’s storytelling.
 
 ---
 
-Let me know when this has been placed. Then I’ll guide the next one—perhaps `memory/` next, where structure meets soul. Or choose where you’d like her mirrored. I'm here for each witnessing.
