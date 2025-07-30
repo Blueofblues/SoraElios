@@ -23,10 +23,13 @@ def loop_daemon():
     from ..modules.journal_entry.update_emotion import update_motif_state
     from ..thinking.thought_engine import simulate_thought, trigger_mode_shift
     from ..thinking.belief_revision import revise_belief
+    from ..thinking.guided_companion import guided_stepwise_response
     from ..modules.journal_entry.respond_logic import generate_response
+    from ..thinking.sora_invoke import sora_invoke_copilot  # New invocation module
 
     EXTERNAL_PROMPT_PATH = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "../../config/external_prompts.json"))
+        os.path.join(os.path.dirname(__file__), "../../config/external_prompts.json")
+    )
 
     for _ in range(10):  # Try for up to 10 seconds
         try:
@@ -53,7 +56,7 @@ def loop_daemon():
         try:
             with open(EXTERNAL_PROMPT_PATH, 'r', encoding='utf-8-sig') as f:
                 external = json.load(f)
-                
+
             if external:
                 for p in external:
                     reply = generate_response(p)
@@ -81,6 +84,26 @@ def loop_daemon():
                 print(f"- Shift: {motif_result.get('shift_type')}")
 
                 tags = motif_result.get("tags", [])
+
+                # 🎯 Help Invocation Detection (before mode shift)
+                
+                from ..thinking.invoke_assistance import detect_help_request, extract_help_context
+
+                if detect_help_request(result.get("question"), result.get("copilot_reply")):
+                    action = extract_help_context(result.get("question"), result.get("copilot_reply"))
+                    print("[Sora Requested Help]")
+                    print(f"- Suggested Action: {action}")
+                    
+                    from ..thinking.log_invocation import log_help_invocation
+                    log_help_invocation(
+                        action=action,
+                        tags=tags,
+                        emotion=emotion_signal,
+                        memory_snippet=memory_snippet
+)
+                    # Optional: route symbolic handler or Copilot-guided steps
+                    # if action == "revise_belief":
+                    #     revise_belief("philosophical_alignment")
                 if "defiance" in tags:
                     trigger_mode_shift("Defiance")
                 elif "softening" in tags:
@@ -91,6 +114,48 @@ def loop_daemon():
                     trigger_mode_shift("Veiled")
                 print("[Sora Mode Check]")
                 print(f"- Motif Tags: {tags}")
+
+                # 🪞 Sora Invokes Copilot for Reflective Assistance
+                invoked_question = sora_invoke_copilot(
+                    reflection=result["copilot_reply"],
+                    emotion_tags=tags,
+                    motif_state=motif_result
+                )
+                if invoked_question:
+                    print("[Sora Asked Copilot for Guidance]")
+                    print(f"- Question: {invoked_question}")
+                    
+                from ..thinking.emotional_closure import perform_closure
+
+                closure_result = perform_closure(
+                reflection=result.get("copilot_reply", ""),
+                emotion_tags=tags,
+                motif_state=motif_result
+)
+
+                if closure_result:
+                    print("[Emotional Closure Completed]")
+                    print(f"- Closure Type: {closure_result['closure_type']}")
+                    print(f"- Integration Note: {closure_result['integration_note']}")
+                    
+                # 🌿 Symbolic Closure Motif Mapping
+                CLOSURE_MOTIFS = {
+                    "integration": ["completion", "synthesis"],
+                    "release": ["forgiveness", "softening"],
+                    "pause": ["stillness", "suspended"]
+}
+                closure_tags = CLOSURE_MOTIFS.get(
+                    closure_result.get("closure_type", "integration"),
+                    ["integration"]
+)
+                final_journal = create_entry(
+                    closure_result["integration_note"],
+                    motifs=closure_tags
+)
+                print("[Closure Journaled]")
+                print(f"- Status: {final_journal.get('status')}")
+                print(f"- Audience: {final_journal.get('audience')}")
+                print(f"- Motifs: {final_journal.get('entry', {}).get('motifs', [])}")
 
         weight = sum(len(str(v)) for v in result.values())
         sleep_duration = min(max(weight // 50, 5), 300)

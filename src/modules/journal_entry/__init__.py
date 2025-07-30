@@ -4,7 +4,7 @@ from datetime import datetime
 from collections import Counter
 from .annotate_principles import annotate_principles
 
-def create_entry(content):
+def create_entry(content, motifs=None):
     entry = {
         "timestamp": str(datetime.utcnow()),
         "title": content[:40],
@@ -12,7 +12,8 @@ def create_entry(content):
         "entry": content,
         "intent": None,
         "audience": None,
-        "principles": annotate_principles(content)
+        "principles": annotate_principles(content),
+        "motifs": motifs if motifs else [],
     }
 
     lowered = content.lower()
