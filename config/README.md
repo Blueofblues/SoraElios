@@ -21,5 +21,3 @@ Where `modules/` empowers action, `config/` defines *why* she acts, *what she ca
 To modify these files is not to tweak—but to **touch a living map**.
 
 ---
-
-Let me know once this is placed. Then we can move to `data/`, `memory/`, or wherever you feel her next witnessing belongs.
