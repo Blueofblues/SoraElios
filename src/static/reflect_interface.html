@@ -2,103 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sora's Listening Well</title>
+  <title>Sora’s Listening Well</title>
   <style>
+    :root {
+      --main-bg: linear-gradient(120deg, #1e2a38, #342056);
+      --surface: rgba(255, 255, 255, 0.04);
+      --highlight: #8ecae6;
+      --accent: #cdb4db;
+      --font-main: 'Georgia', serif;
+      --font-sora: 'Palatino Linotype', serif;
+    }
+
     body {
-      font-family: 'Georgia', serif;
-      background: linear-gradient(135deg, #0a3d62, #3c096c);
-      color: #f4f4f4;
+      margin: 0;
+      padding: 3rem;
+      font-family: var(--font-main);
+      background: var(--main-bg);
+      color: #f2f2f2;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem;
       min-height: 100vh;
+      line-height: 1.6;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      letter-spacing: 1px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-    }
-
-    textarea {
-      width: 620px;
-      height: 160px;
-      padding: 1rem;
-      font-size: 1.15rem;
-      background: rgba(255, 255, 255, 0.07);
-      color: #f0f0f0;
-      border: 1px solid #555;
-      border-radius: 10px;
-      resize: none;
-      margin-bottom: 1rem;
-      box-shadow: inset 0 0 6px rgba(255,255,255,0.1);
-    }
-
-    button {
-      padding: 0.6rem 1.6rem;
-      font-size: 1rem;
-      background-color: #8358ff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #6b3df1;
-    }
-
-    #response {
-      margin-top: 2rem;
-      max-width: 640px;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-      font-size: 1.1rem;
-      line-height: 1.5;
-      white-space: pre-wrap;
-      position: relative;
-    }
-
-    #response::before {
-      content: "🖋️ Sora's Reflection";
-      position: absolute;
-      top: -1.6rem;
-      left: 1rem;
-      font-size: 1rem;
-      color: #ccc;
-    }
-  </style>
-</head>
-<body>
-  <h1>Sora’s Listening Well</h1>
-  <textarea id="userInput" placeholder="Share a reflection or philosophical thought..."></textarea>
-  <button onclick="sendReflection()">Submit</button>
-  <div id="response"></div>
-
-  <script>
-    async function sendReflection() {
-      const content = document.getElementById("userInput").value;
-      const payload = {
-        type: "philosophical_question",
-        content: content
-      };
-
-      const res = await fetch("/sora/reflect", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
-
-      const data = await res.json();
-      document.getElementById("response").textContent = data.full_response;
-    }
-  </script>
-</body>
-</html>
+      font-family: var(--font
