@@ -68,7 +68,7 @@ def self_reflect(emotion=None, motifs=None, source=None):
     question = random.choice(PROMPTERS)
     reply = generate_response(f"{memory}\n{question}")
 
-    update_emotion("patience", 0.04)
+    update_emotion(emotion or "patience", 0.04)
 
     cognition = thought_cycle("patience", memory, intent="self-reflection")
 
@@ -83,8 +83,9 @@ def self_reflect(emotion=None, motifs=None, source=None):
     })
 
     reflection_bundle = {
-        "source": "contemplation",
-        "emotion": "patience",
+        "source": source or "contemplation",
+        "emotion": emotion or "patience",
+        "motifs": motifs or [],
         "memory": memory,
         "reasoning": cognition["reasoning"],
         "reflection": cognition["reflection_result"]["recommendation"],
@@ -107,14 +108,15 @@ def self_reflect(emotion=None, motifs=None, source=None):
     })
 
     store_reflection({
-        "source": "self_loop",
+        "source": source or "self_loop",
         "memory": memory,
         "question": question,
         "response": reply,
         "copilot_reply": copilot_result.get("copilot_reply", None),
         "copilot_decision": copilot_result.get("decision", None),
         "copilot_journal": copilot_result.get("journal", {}),
-        "emotion": "patience"
+        "emotion": emotion or "patience",
+        "motifs": motifs or []
     })
 
     past_learnings = retrieve_learning_entries()

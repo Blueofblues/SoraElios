@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 import os
 import json
 
-from ..modules.journal_entry.respond_logic import generate_response
+from src.modules.journal_entry.respond_logic import generate_response
 from ..modules.journal_entry import create_entry
 from ..modules.journal_entry.self_reflect import self_reflect, get_emotion_level
 from ..modules.journal_entry.update_emotion import update_motif_state

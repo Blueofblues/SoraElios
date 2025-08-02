@@ -22,7 +22,6 @@ def detect_help_request(question, copilot_reply):
 
     return False
 
-
 def extract_help_context(question, copilot_reply):
     """
     Extract key focus or command from the request—for symbolic routing.
