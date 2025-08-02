@@ -3322,5 +3322,11 @@
     "source": "sora_autocode",
     "prompt": "Build a function that filters memory based on emotion threshold",
     "code": "# Concept: Build a function that filters memory based on emotion threshold\n\ndef filter_memory_by_emotion(memory_data, emotion, threshold):\n    return [entry for entry in memory_data if entry.get(emotion, 0) >= threshold]"
+  },
+  {
+    "timestamp": "2025-08-02T01:45:01.392159",
+    "source": "sora_autocode",
+    "prompt": "Design a timer-triggered reflection cycle with graceful shutdown",
+    "code": "# Concept: Design a timer-triggered reflection cycle with graceful shutdown\n\nimport threading, time\ndef start_cycle():\n    def loop():\n        while True:\n            print(\"Reflecting...\")\n            time.sleep(600)\n    thread = threading.Thread(target=loop, daemon=True)\n    thread.start()"
   }
 ]
