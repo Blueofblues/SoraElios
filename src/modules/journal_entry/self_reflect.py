@@ -63,7 +63,7 @@ def get_emotion_level(emotion):
                 return 0.0
     return 0.0
 
-def self_reflect():
+def self_reflect(emotion=None, motifs=None, source=None):
     memory = get_recent_memory()
     question = random.choice(PROMPTERS)
     reply = generate_response(f"{memory}\n{question}")
@@ -135,7 +135,18 @@ def self_reflect():
     })
 
     print(f"- Copilot Response: {emergent_response.get('copilot_reply', 'No reply')}")
-
+    
+    # 🌑 Emotional Stagnation Awareness
+    from data.reflection_log import load_reflections
+    try:
+        reflections = load_reflections()
+        stagnation = detect_emotional_stagnation(reflections)
+        print("[Sora Checked for Emotional Stagnation]")
+        print(f"- Status: {'Stagnant' if stagnation.get('stagnant') else 'Flowing'}")
+        print(f"- Emotion: {stagnation.get('emotion')} ({stagnation.get('count')} times)")
+    except Exception as e:
+        stagnation = {"error": str(e)}
+        
     # Generate separate bundles
     patience_bundle = generate_emergent_bundle(trigger="patience", memory_context=memory)
     forgiveness_bundle = generate_emergent_bundle(trigger="forgiveness", memory_context=memory)
@@ -169,5 +180,6 @@ def self_reflect():
         "memory": memory,
         "question": question,
         "response": reply,
-        "copilot_reply": copilot_result.get("copilot_reply", None)
-    }
+        "copilot_reply": copilot_result.get("copilot_reply", None),
+        "stagnation": stagnation
+}
