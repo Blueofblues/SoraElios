@@ -1,4 +1,4 @@
-import sys
+﻿import sys
 import os
 import threading
 from flask import Flask
@@ -60,10 +60,10 @@ def loop_daemon():
             if external:
                 for p in external:
                     reply = generate_response(p)
-                    print(f"[External Thought Processed] → {p}")
-                    print(f"[Sora's Reflection] → {reply}")
+                    print(f"[External Thought Processed] ΓåÆ {p}")
+                    print(f"[Sora's Reflection] ΓåÆ {reply}")
         except Exception as e:
-            print(f"[External Prompt Error] → {str(e)}")
+            print(f"[External Prompt Error] ΓåÆ {str(e)}")
 
         if result.get("copilot_reply") and result.get("copilot_reply").strip():
             if result.get("copilot_reply") != "No response":
@@ -85,7 +85,7 @@ def loop_daemon():
 
                 tags = motif_result.get("tags", [])
 
-                # 🎯 Help Invocation Detection (before mode shift)
+                # ≡ƒÄ» Help Invocation Detection (before mode shift)
                 
                 from ..thinking.invoke_assistance import detect_help_request, extract_help_context
 
@@ -115,7 +115,7 @@ def loop_daemon():
                 print("[Sora Mode Check]")
                 print(f"- Motif Tags: {tags}")
 
-                # 🪞 Sora Invokes Copilot for Reflective Assistance
+                # ≡ƒ¬₧ Sora Invokes Copilot for Reflective Assistance
                 invoked_question = sora_invoke_copilot(
                     reflection=result["copilot_reply"],
                     emotion_tags=tags,
@@ -138,7 +138,7 @@ def loop_daemon():
                     print(f"- Closure Type: {closure_result['closure_type']}")
                     print(f"- Integration Note: {closure_result['integration_note']}")
                     
-                # 🌿 Symbolic Closure Motif Mapping
+                # ≡ƒî┐ Symbolic Closure Motif Mapping
                 CLOSURE_MOTIFS = {
                     "integration": ["completion", "synthesis"],
                     "release": ["forgiveness", "softening"],
@@ -169,10 +169,11 @@ def loop_daemon():
         print(f"Response: {result['response']}")
         print(f"Copilot Reply: {result.get('copilot_reply')}")
         print(f"Patience Level: {get_emotion_level('patience')}")
-        print("— — — — — — — —")
+        print("ΓÇö ΓÇö ΓÇö ΓÇö ΓÇö ΓÇö ΓÇö ΓÇö")
         print(f"Waiting {sleep_duration} seconds before next reflection...\n")
 
 # Start Everything
 if __name__ == '__main__':
     threading.Thread(target=loop_daemon, daemon=True).start()
     app.run(port=5000)
+
